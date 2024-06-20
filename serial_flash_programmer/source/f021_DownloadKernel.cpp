@@ -103,6 +103,13 @@ void clearBuffer(void)
 {
 
 #ifdef __linux__
+	int tci, tco;
+
+	tci = tcflush(fd, TCIFLUSH);
+	QUIETPRINT(_T("Input sucessfully flushed: %d"), tci);
+	tco = tcflush(fd, TCOFLUSH);
+	QUIETPRINT(_T("Output successfully flushed: %d"), tco);
+	
 	if (tcflush(fd, TCIOFLUSH) == 0)
 	{
 		QUIETPRINT(_T("Input and Output successfully flushed"));
