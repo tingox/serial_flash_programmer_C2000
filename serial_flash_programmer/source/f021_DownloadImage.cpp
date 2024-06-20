@@ -455,6 +455,8 @@ int f021_DownloadImage(wchar_t *applicationFile)
 	VERBOSEPRINT(_T("\nApplication load successful!"));
 
 	VERBOSEPRINT(_T("\nDone waiting for application to download and boot... "));
-	clearBuffer();
+	// the var-som-imx6 hangs on the clearBuffer() call here, adding a Sleep(6) before doesn't help
+	// comment out for now, it seems an accepatble workaround
+	// clearBuffer();
 	return (1);
 }
